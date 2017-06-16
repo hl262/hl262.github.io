@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[UseGitHub-HexoSetUpYouSelfBlog]]></title>
+    <url>%2F2017%2F06%2F16%2FUseGitHub-HexoSetUpYouSelfBlog-1%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[使用GitHub + Hexo搭建个人博客]]></title>
+    <url>%2F2017%2F06%2F16%2FUseGitHub-HexoSetUpYouSelfBlog%2F</url>
+    <content type="text"><![CDATA[正文:]]></content>
+      <categories>
+        <category>网络</category>
+      </categories>
+      <tags>
+        <tag>博客搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[分类测试]]></title>
     <url>%2F2017%2F06%2F16%2Fcategories-test%2F</url>
     <content type="text"><![CDATA[这是一篇分类测试文章]]></content>
