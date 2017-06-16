@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[hah]]></title>
-    <url>%2F2017%2F06%2F16%2Fhah%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[UseGitHub-HexoSetUpYouSelfBlog]]></title>
-    <url>%2F2017%2F06%2F16%2FUseGitHub-HexoSetUpYouSelfBlog-1%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
     <title><![CDATA[使用GitHub + Hexo搭建个人博客]]></title>
     <url>%2F2017%2F06%2F16%2FUseGitHub-HexoSetUpYouSelfBlog%2F</url>
     <content type="text"><![CDATA[正文:]]></content>
@@ -40,11 +30,6 @@
         <tag>Testing</tag>
         <tag>Another Tag</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hehha]]></title>
-    <url>%2F2017%2F06%2F16%2FHehha%2F</url>
-    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
