@@ -12,7 +12,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[DocLib]]></title>
+    <title><![CDATA[Android资料库]]></title>
     <url>%2F2017%2F06%2F16%2FDocLib%2F</url>
     <content type="text"><![CDATA[基础知识 Java代码中的面向对象 JDK 1.8 Lambda表达式 组件 Activity Activity生命周期及启动模式介绍 Activity之间的值传递 Activity的加载模式 控件使用 FragmentTabHost(相当于ViewPager的TabLayout) DrawerLayout 安卓自带侧拉菜单 进阶知识 消息机制 Handler AsyncTask异步任务 TCP/IP - 阿里中间件技术博客 Android中的第三方图片加载库 设计模式 单例模式 单例的七种写法 事件分发机制详解 事件分发(郭霖) Android动画机制详解(徐宜生) Android5.0 &amp; 6.0 新增控件 - 来自CSDN Android中样式类Span操作富文本 第三方SDK及开源框架 开源框架 网络框架 Retrofit 图片加载框架 进程间通信 数据库框架 MM]]></content>
       <categories>
