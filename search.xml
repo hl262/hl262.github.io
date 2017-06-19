@@ -12,6 +12,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[DocLib]]></title>
+    <url>%2F2017%2F06%2F16%2FDocLib%2F</url>
+    <content type="text"><![CDATA[基础知识 Java代码中的面向对象 JDK 1.8 Lambda表达式 组件 Activity Activity生命周期及启动模式介绍 Activity之间的值传递 Activity的加载模式 控件使用 FragmentTabHost(相当于ViewPager的TabLayout) DrawerLayout 安卓自带侧拉菜单 进阶知识 消息机制 Handler AsyncTask异步任务 TCP/IP - 阿里中间件技术博客 Android中的第三方图片加载库 设计模式 单例模式 单例的七种写法 事件分发机制详解 事件分发(郭霖) Android动画机制详解(徐宜生) Android5.0 &amp; 6.0 新增控件 - 来自CSDN Android中样式类Span操作富文本 第三方SDK及开源框架 开源框架 网络框架 Retrofit 图片加载框架 进程间通信 数据库框架 MM]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>知识库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[分类测试]]></title>
     <url>%2F2017%2F06%2F16%2Fcategories-test%2F</url>
     <content type="text"><![CDATA[这是一篇分类测试文章]]></content>
@@ -35,5 +46,13 @@
     <title><![CDATA[Hello World]]></title>
     <url>%2F2017%2F06%2F16%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[利用子域名在虚拟主机中]]></title>
+    <url>%2F2017%2F06%2F15%2FWordpressChildWebSite%2F</url>
+    <content type="text"><![CDATA[使用的产品:本文使用的是阿里云的Web 弹性托管 暂时没有测试数据库的问题 实现步骤: 在已备案的域名下添加子域名解析 在弹性微博托管控制台添加域名绑定 使用FTP工具在网站根目录创名为test的建子文件夹,并上传网站文件到目录 创建文本文件内容如下 12345RewriteEngine OnRewriteCond %&#123;HTTP_HOST&#125; ^(www.)?test.hl262.top$RewriteRule ^(/)?$ test [L] ​ 上传文件到网站根目录并改名为.htaccess 访问子域名test.hl262.top成功如下图]]></content>
+      <tags>
+        <tag>子域名</tag>
+      </tags>
   </entry>
 </search>
