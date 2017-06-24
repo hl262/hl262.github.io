@@ -1,0 +1,1477 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Socket," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="这是一份很详细的Socket使用攻略 原文地址  前言  Socket的使用在 Android网络编程中非常重要 今天我将带大家全面了解 Socket 及 其使用方法  目录 目录  1.网络基础1.1 计算机网络分层计算机网络分为五层：物理层、数据链路层、网络层、运输层、应用层  计算机网络 其中：  网络层：负责根据IP找到目的地址的主机 运输层：通过端口把数据传到目的主机的目的进程，来实现">
+<meta name="keywords" content="Socket">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SocketExplain">
+<meta property="og:url" content="http://yoursite.com/2017/06/24/SocketExplain/index.html">
+<meta property="og:site_name" content="黄雷个人博客">
+<meta property="og:description" content="这是一份很详细的Socket使用攻略 原文地址  前言  Socket的使用在 Android网络编程中非常重要 今天我将带大家全面了解 Socket 及 其使用方法  目录 目录  1.网络基础1.1 计算机网络分层计算机网络分为五层：物理层、数据链路层、网络层、运输层、应用层  计算机网络 其中：  网络层：负责根据IP找到目的地址的主机 运输层：通过端口把数据传到目的主机的目的进程，来实现">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-8ae76a32c031b97d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-c35ec7bfb82b690b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-c57e88a0318ef517.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-ca6e707d5bef40fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-a59e6fb7b501f1e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-8df0ed7afe6b32d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-90b634041b47b84a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-0f69bb561fbca4f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-7438aa8f57a738ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-4d7ec8242eeb9c47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-399d395e3995810c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-b30bd33353835786.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-67d0d9eaa71cc3f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-06-24T09:47:35.665Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SocketExplain">
+<meta name="twitter:description" content="这是一份很详细的Socket使用攻略 原文地址  前言  Socket的使用在 Android网络编程中非常重要 今天我将带大家全面了解 Socket 及 其使用方法  目录 目录  1.网络基础1.1 计算机网络分层计算机网络分为五层：物理层、数据链路层、网络层、运输层、应用层  计算机网络 其中：  网络层：负责根据IP找到目的地址的主机 运输层：通过端口把数据传到目的主机的目的进程，来实现">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/944365-8ae76a32c031b97d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/24/SocketExplain/"/>
+
+
+
+
+
+  <title>SocketExplain | 黄雷个人博客</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">黄雷个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">曾让你心疼的姑娘,如今已悄然无踪影</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="http://wp.hl262.top" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            WP
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/24/SocketExplain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Huanglei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://wp.hl262.top/dog2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="黄雷个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SocketExplain</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-24T17:43:14+08:00">
+                2017-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/24/SocketExplain/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/24/SocketExplain/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><h1 id="这是一份很详细的Socket使用攻略"><a href="#这是一份很详细的Socket使用攻略" class="headerlink" title="这是一份很详细的Socket使用攻略"></a>这是一份很详细的Socket使用攻略</h1><p><a href="http://www.jianshu.com/p/089fb79e308b" target="_blank" rel="external"> 原文地址</a></p>
+<p> 前言</p>
+<ul>
+<li><code>Socket</code>的使用在 <code>Android</code>网络编程中非常重要</li>
+<li>今天我将带大家全面了解 <code>Socket</code> 及 其使用方法</li>
+</ul>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><p><img src="http://upload-images.jianshu.io/upload_images/944365-8ae76a32c031b97d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>目录</p>
+<hr>
+<h1 id="1-网络基础"><a href="#1-网络基础" class="headerlink" title="1.网络基础"></a>1.网络基础</h1><h4 id="1-1-计算机网络分层"><a href="#1-1-计算机网络分层" class="headerlink" title="1.1 计算机网络分层"></a>1.1 计算机网络分层</h4><p>计算机网络分为五层：物理层、数据链路层、网络层、运输层、应用层</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/944365-c35ec7bfb82b690b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>计算机网络</p>
+<p>其中：</p>
+<ul>
+<li>网络层：负责根据IP找到目的地址的主机</li>
+<li>运输层：通过端口把数据传到目的主机的目的进程，来实现进程与进程之间的通信</li>
+</ul>
+<h4 id="1-2-端口号（PORT）"><a href="#1-2-端口号（PORT）" class="headerlink" title="1.2 端口号（PORT）"></a>1.2 端口号（PORT）</h4><p>端口号规定为16位，即允许一个IP主机有2的16次方65535个不同的端口。其中：</p>
+<ul>
+<li><p>0~1023：分配给系统的端口号</p>
+<p>​</p>
+<blockquote>
+<p>我们不可以乱用</p>
+</blockquote>
+</li>
+<li><p>1024~49151：登记端口号，主要是让第三方应用使用</p>
+<p>​</p>
+<blockquote>
+<p>但是必须在IANA（互联网数字分配机构）按照规定手续登记，</p>
+</blockquote>
+</li>
+<li><p>49152~65535：短暂端口号，是留给客户进程选择暂时使用，一个进程使用完就可以供其他进程使用。</p>
+</li>
+</ul>
+<blockquote>
+<p>在Socket使用时，可以用1024~65535的端口号</p>
+</blockquote>
+<h4 id="1-3-C-S结构"><a href="#1-3-C-S结构" class="headerlink" title="1.3 C/S结构"></a>1.3 C/S结构</h4><ul>
+<li><p>定义：即客户端/服务器结构，是软件系统体系结构</p>
+</li>
+<li><p>作用：充分利用两端硬件环境的优势，将任务合理分配到Client端和Server端来实现，降低了系统的通讯开销。</p>
+<p>​</p>
+<blockquote>
+<p>Socket正是使用这种结构建立连接的，一个套接字接客户端，一个套接字接服务器。</p>
+</blockquote>
+</li>
+</ul>
+<p>如图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/944365-c57e88a0318ef517.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>Socket架构</p>
+<blockquote>
+<p>可以看出，Socket的使用可以基于TCP或者UDP协议。</p>
+</blockquote>
+<h4 id="1-4-TCP协议"><a href="#1-4-TCP协议" class="headerlink" title="1.4 TCP协议"></a>1.4 TCP协议</h4><ul>
+<li><p>定义：Transmission Control Protocol，即传输控制协议，是一种传输层通信协议</p>
+<p>​</p>
+<blockquote>
+<p>基于TCP的应用层协议有FTP、Telnet、SMTP、HTTP、POP3与DNS。</p>
+</blockquote>
+</li>
+<li><p>特点：面向连接、面向字节流、全双工通信、可靠</p>
+<ul>
+<li><strong>面向连接</strong>：指的是要使用TCP传输数据，必须先建立TCP连接，传输完成后释放连接，就像打电话一样必须先拨号建立一条连接，打完后挂机释放连接。</li>
+<li><strong>全双工通信</strong>：即一旦建立了TCP连接，通信双方可以在任何时候都能发送数据。</li>
+<li><strong>可靠的</strong>：指的是通过TCP连接传送的数据，无差错，不丢失，不重复，并且按序到达。</li>
+<li><strong>面向字节流</strong>：流，指的是流入到进程或从进程流出的字符序列。简单来说，虽然有时候要传输的数据流太大，TCP报文长度有限制，不能一次传输完，要把它分为好几个数据块，但是由于可靠性保证，接收方可以按顺序接收数据块然后重新组成分块之前的数据流，所以TCP看起来就像直接互相传输字节流一样，面向字节流。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>TCP建立连接</p>
+<p>​</p>
+<p> 必须进行</p>
+<p>三次握手</p>
+<p>：若A要与B进行连接，则必须</p>
+<ul>
+<li><p>第一次握手：建立连接。客户端发送连接请求报文段，将SYN位置为1，Sequence Number为x；然后，客户端进入SYN_SEND状态，等待服务器的确认。即A发送信息给B</p>
+</li>
+<li><p>第二次握手：服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认。即B收到连接信息后向A返回确认信息</p>
+</li>
+<li><p>第三次握手：客户端收到服务器的（SYN+ACK）报文段，并向服务器发送ACK报文段。即A收到确认信息后再次向B返回确认连接信息</p>
+<p>​</p>
+<blockquote>
+<p>此时，A告诉自己上层连接建立；B收到连接信息后告诉上层连接建立。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/944365-ca6e707d5bef40fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>TCP三次握手</p>
+<p>这样就完成TCP三次握手 = 一条TCP连接建立完成 = 可以开始发送数据</p>
+<blockquote>
+<ol>
+<li>三次握手期间任何一次未收到对面回复都要重发。</li>
+<li>最后一个确认报文段发送完毕以后，客户端和服务器端都进入ESTABLISHED状态。</li>
+</ol>
+</blockquote>
+<h4 id="为什么TCP建立连接需要三次握手？"><a href="#为什么TCP建立连接需要三次握手？" class="headerlink" title="为什么TCP建立连接需要三次握手？"></a>为什么TCP建立连接需要三次握手？</h4><p>答：防止服务器端因为接收了<strong>早已失效的连接请求报文</strong>从而一直等待客户端请求，从而浪费资源</p>
+<blockquote>
+<ul>
+<li>“已失效的连接请求报文段”的产生在这样一种情况下：Client发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达server。</li>
+<li>这是一个早已失效的报文段。但Server收到此失效的连接请求报文段后，就误认为是Client再次发出的一个新的连接请求。</li>
+<li>于是就向Client发出确认报文段，同意建立连接。</li>
+<li>假设不采用“三次握手”：只要Server发出确认，新的连接就建立了。</li>
+<li>由于现在Client并没有发出建立连接的请求，因此不会向Server发送数据。</li>
+<li>但Server却以为新的运输连接已经建立，并一直等待Client发来数据。&gt;- 这样，Server的资源就白白浪费掉了。</li>
+</ul>
+</blockquote>
+<p>采用“三次握手”的办法可以防止上述现象发生：</p>
+<ul>
+<li>Client不会向Server的确认发出确认</li>
+<li>Server由于收不到确认，就知道Client并没有要求建立连接</li>
+<li>所以Server不会等待Client发送数据，资源就没有被浪费</li>
+</ul>
+<ul>
+<li><p>TCP释放连接</p>
+<p>​</p>
+<p> TCP释放连接需要</p>
+<p>四次挥手</p>
+<p>过程，现在假设A主动释放连接：（数据传输结束后，通信的双方都可释放连接）</p>
+<ul>
+<li><p>第一次挥手：A发送释放信息到B；（发出去之后，A-&gt;B发送数据这条路径就断了）</p>
+</li>
+<li><p>第二次挥手：B收到A的释放信息之后，回复确认释放的信息：我同意你的释放连接请求</p>
+</li>
+<li><p>第三次挥手：B发送“请求释放连接“信息给A</p>
+</li>
+<li><p>第四次挥手：A收到B发送的信息后向B发送确认释放信息：我同意你的释放连接请求</p>
+<p>​</p>
+<blockquote>
+<p>B收到确认信息后就会正式关闭连接；<br> A等待2MSL后依然没有收到回复，则证明B端已正常关闭，于是A关闭连接</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/944365-a59e6fb7b501f1e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>TCp四次握手</p>
+<h4 id="为什么TCP释放连接需要四次挥手？"><a href="#为什么TCP释放连接需要四次挥手？" class="headerlink" title="为什么TCP释放连接需要四次挥手？"></a>为什么TCP释放连接需要四次挥手？</h4><p>为了保证双方都能通知对方“需要释放连接”，即在释放连接后都无法接收或发送消息给对方</p>
+<ul>
+<li><p>需要明确的是：TCP是全双工模式，这意味着是双向都可以发送、接收的</p>
+</li>
+<li><p>释放连接的定义是：双方都无法接收或发送消息给对方，是双向的</p>
+</li>
+<li><p>当主机1发出“释放连接请求”（FIN报文段）时，只是表示主机1已经没有数据要发送 / 数据已经全部发送完毕；</p>
+<p>​</p>
+<blockquote>
+<p>但是，这个时候主机1还是可以接受来自主机2的数据。</p>
+</blockquote>
+</li>
+<li><p>当主机2返回“确认释放连接”信息（ACK报文段）时，表示它已经知道主机1没有数据发送了</p>
+<p>​</p>
+<blockquote>
+<p>但此时主机2还是可以发送数据给主机1</p>
+</blockquote>
+</li>
+<li><p>当主机2也发送了FIN报文段时，即告诉主机1我也没有数据要发送了</p>
+<p>​</p>
+<blockquote>
+<p>此时，主机1和2已经无法进行通信：主机1无法发送数据给主机2，主机2也无法发送数据给主机1，此时，TCP的连接才算释放</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="1-5-UDP协议"><a href="#1-5-UDP协议" class="headerlink" title="1.5 UDP协议"></a>1.5 UDP协议</h5><ul>
+<li><p>定义：User Datagram Protocol，即用户数据报协议，是一种传输层通信协议。</p>
+<p>​</p>
+<blockquote>
+<p>基于UDP的应用层协议有TFTP、SNMP与DNS。</p>
+</blockquote>
+</li>
+<li><p>特点：无连接的、不可靠的、面向报文、没有拥塞控制</p>
+<ul>
+<li><strong>无连接的</strong>：和TCP要建立连接不同，UDP传输数据不需要建立连接，就像写信，在信封写上收信人名称、地址就可以交给邮局发送了，至于能不能送到，就要看邮局的送信能力和送信过程的困难程度了。</li>
+<li><strong>不可靠的</strong>：因为UDP发出去的数据包发出去就不管了，不管它会不会到达，所以很可能会出现丢包现象，使传输的数据出错。</li>
+<li><strong>面向报文</strong>：数据报文，就相当于一个数据包，应用层交给UDP多大的数据包，UDP就照样发送，不会像TCP那样拆分。</li>
+<li><strong>没有拥塞控制</strong>：拥塞，是指到达通信子网中某一部分的分组数量过多，使得该部分网络来不及处理，以致引起这部分乃至整个网络性能下降的现象，严重时甚至会导致网络通信业务陷入停顿，即出现死锁现象，就像交通堵塞一样。TCP建立连接后如果发送的数据因为信道质量的原因不能到达目的地，它会不断重发，有可能导致越来越塞，所以需要一个复杂的原理来控制拥塞。而UDP就没有这个烦恼，发出去就不管了。</li>
+</ul>
+</li>
+<li><p>应用场景<br> 很多的实时应用（如IP电话、实时视频会议、某些多人同时在线游戏等）要求源主机以很定的速率发送数据，并且允许在网络发生拥塞时候丢失一些数据，但是要求不能有太大的延时，UDP就刚好适合这种要求。所以说，只有不适合的技术，没有真正没用的技术。</p>
+</li>
+</ul>
+<h5 id="1-6-HTTP协议"><a href="#1-6-HTTP协议" class="headerlink" title="1.6 HTTP协议"></a>1.6 HTTP协议</h5><p>详情请看我写的另外一篇文章<a href="http://www.jianshu.com/p/a6d086a3997d" target="_blank" rel="external">你需要了解的HTTP知识都在这里了！</a></p>
+<hr>
+<h1 id="2-Socket定义"><a href="#2-Socket定义" class="headerlink" title="2. Socket定义"></a>2. Socket定义</h1><ul>
+<li><p>即套接字，</p>
+<p>是一个对 TCP / IP协议进行封装 的编程调用接口（API）</p>
+<p>​</p>
+<blockquote>
+<ol>
+<li>即通过<code>Socket</code>，我们才能在Andorid平台上通过 <code>TCP/IP</code>协议进行开发</li>
+<li><code>Socket</code>不是一种协议，而是一个编程调用接口（<code>API</code>），属于传输层（主要解决数据如何在网络中传输）</li>
+</ol>
+</blockquote>
+</li>
+<li><p>成对出现，一对套接字：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Socket =&#123;(IP地址1:PORT端口号)，(IP地址2:PORT端口号)&#125;</div></pre></td></tr></table></figure>
+<h1 id="3-原理"><a href="#3-原理" class="headerlink" title="3. 原理"></a>3. 原理</h1><p><code>Socket</code>的使用类型主要有两种：</p>
+<ul>
+<li>流套接字（<code>streamsocket</code>） ：基于 <code>TCP</code>协议，采用 <strong>流的方式</strong> 提供可靠的字节流服务</li>
+<li>数据报套接字(<code>datagramsocket</code>)：基于 <code>UDP</code>协议，采用 <strong>数据报文</strong> 提供数据打包发送的服务</li>
+</ul>
+<p>具体原理图如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/944365-8df0ed7afe6b32d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>原理图</p>
+<h1 id="4-Socket-与-Http-对比"><a href="#4-Socket-与-Http-对比" class="headerlink" title="4. Socket 与 Http 对比"></a>4. Socket 与 Http 对比</h1><ul>
+<li><code>Socket</code>属于传输层，因为 <code>TCP / IP</code>协议属于传输层，<strong>解决的是数据如何在网络中传输的问题</strong></li>
+<li><code>HTTP</code>协议 属于 应用层，<strong>解决的是如何包装数据</strong></li>
+</ul>
+<p>由于二者不属于同一层面，所以本来是没有可比性的。但随着发展，默认的Http里封装了下面几层的使用，所以才会出现<code>Socket</code> &amp; <code>HTTP</code>协议的对比：（主要是工作方式的不同）：</p>
+<ul>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Http</div></pre></td></tr></table></figure>
+<p>：采用 </p>
+<p>请求—响应</p>
+<p> 方式。</p>
+<p>​</p>
+<blockquote>
+<ol>
+<li>即建立网络连接后，当 客户端 向 服务器 发送请求后，服务器端才能向客户端返回数据。</li>
+<li>可理解为：<strong>是客户端有需要才进行通信</strong></li>
+</ol>
+</blockquote>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Socket</div></pre></td></tr></table></figure>
+<p>：采用 </p>
+<p>服务器主动发送数据</p>
+<p> 的方式</p>
+<p>​</p>
+<blockquote>
+<ol>
+<li>即建立网络连接后，服务器可主动发送消息给客户端，而不需要由客户端向服务器发送请求</li>
+<li>可理解为：<strong>是服务器端有需要才进行通信</strong></li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h1 id="5-使用步骤"><a href="#5-使用步骤" class="headerlink" title="5. 使用步骤"></a>5. 使用步骤</h1><ul>
+<li><code>Socket</code>可基于<code>TCP</code>或者<code>UDP</code>协议，<strong>但TCP更加常用</strong></li>
+<li>所以下面的使用步骤 &amp; 实例的<code>Socket</code>将基于<code>TCP</code>协议</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">// 步骤1：创建客户端 &amp; 服务器的连接</div><div class="line"></div><div class="line">    // 创建Socket对象 &amp; 指定服务端的IP及端口号 </div><div class="line">    Socket socket = new Socket(&quot;192.168.1.32&quot;, 1989);  </div><div class="line"></div><div class="line">    // 判断客户端和服务器是否连接成功  </div><div class="line">    socket.isConnected());</div><div class="line"></div><div class="line"></div><div class="line">// 步骤2：客户端 &amp; 服务器 通信</div><div class="line">// 通信包括：客户端 接收服务器的数据 &amp; 发送数据 到 服务器</div><div class="line"></div><div class="line">    &lt;-- 操作1：接收服务器的数据 --&gt;</div><div class="line"></div><div class="line">            // 步骤1：创建输入流对象InputStream</div><div class="line">            InputStream is = socket.getInputStream() </div><div class="line"></div><div class="line">            // 步骤2：创建输入流读取器对象 并传入输入流对象</div><div class="line">            // 该对象作用：获取服务器返回的数据</div><div class="line">            InputStreamReader isr = new InputStreamReader(is);</div><div class="line">            BufferedReader br = new BufferedReader(isr);</div><div class="line"></div><div class="line">            // 步骤3：通过输入流读取器对象 接收服务器发送过来的数据</div><div class="line">            br.readLine()；</div><div class="line"></div><div class="line"></div><div class="line">    &lt;-- 操作2：发送数据 到 服务器 --&gt;                  </div><div class="line"></div><div class="line">            // 步骤1：从Socket 获得输出流对象OutputStream</div><div class="line">            // 该对象作用：发送数据</div><div class="line">            OutputStream outputStream = socket.getOutputStream(); </div><div class="line"></div><div class="line">            // 步骤2：写入需要发送的数据到输出流对象中</div><div class="line">            outputStream.write（（&quot;Carson_Ho&quot;+&quot;\n&quot;）.getBytes(&quot;utf-8&quot;)）；</div><div class="line">            // 特别注意：数据的结尾加上换行符才可让服务器端的readline()停止阻塞</div><div class="line"></div><div class="line">            // 步骤3：发送数据到服务端 </div><div class="line">            outputStream.flush();  </div><div class="line"></div><div class="line"></div><div class="line">// 步骤3：断开客户端 &amp; 服务器 连接</div><div class="line"></div><div class="line">             os.close();</div><div class="line">            // 断开 客户端发送到服务器 的连接，即关闭输出流对象OutputStream</div><div class="line"></div><div class="line">            br.close();</div><div class="line">            // 断开 服务器发送到客户端 的连接，即关闭输入流读取器对象BufferedReader</div><div class="line"></div><div class="line">            socket.close();</div><div class="line">            // 最终关闭整个Socket连接</div></pre></td></tr></table></figure>
+<h1 id="6-具体实例"><a href="#6-具体实例" class="headerlink" title="6. 具体实例"></a>6. 具体实例</h1><ul>
+<li>实例 <code>Demo</code> 代码包括：客户端 &amp; 服务器</li>
+<li><strong>本文着重讲解客户端</strong>，服务器仅采用最简单的写法进行展示</li>
+</ul>
+<h3 id="6-1-客户端-实现"><a href="#6-1-客户端-实现" class="headerlink" title="6.1 客户端 实现"></a>6.1 客户端 实现</h3><p><strong>步骤1：加入网络权限</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;</div></pre></td></tr></table></figure>
+<p><strong>步骤2：主布局界面设置</strong></p>
+<blockquote>
+<p>包括创建Socket连接、客户端 &amp; 服务器通信的按钮</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&lt;Button</div><div class="line">    android:id=&quot;@+id/connect&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    android:text=&quot;connect&quot; /&gt;</div><div class="line"></div><div class="line">&lt;Button</div><div class="line">    android:id=&quot;@+id/disconnect&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    android:text=&quot;disconnect&quot; /&gt;</div><div class="line"></div><div class="line">&lt;TextView</div><div class="line">    android:id=&quot;@+id/receive_message&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot; /&gt;</div><div class="line"></div><div class="line">&lt;Button</div><div class="line">    android:id=&quot;@+id/Receive&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    android:text=&quot;Receive from message&quot; /&gt;</div><div class="line"></div><div class="line">&lt;EditText</div><div class="line">    android:id=&quot;@+id/edit&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot; /&gt;</div><div class="line"></div><div class="line">&lt;Button</div><div class="line">    android:id=&quot;@+id/send&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    android:text=&quot;send&quot;/&gt;</div></pre></td></tr></table></figure>
+<p><strong>步骤3：创建Socket连接、客户端 &amp; 服务器通信</strong></p>
+<blockquote>
+<p>具体请看注释</p>
+</blockquote>
+<p><em>MainActivity.java</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div></pre></td><td class="code"><pre><div class="line">package scut.carson_ho.socket_carson;</div><div class="line"></div><div class="line">import android.os.Bundle;</div><div class="line">import android.os.Handler;</div><div class="line">import android.os.Message;</div><div class="line">import android.support.v7.app.AppCompatActivity;</div><div class="line">import android.view.View;</div><div class="line">import android.widget.Button;</div><div class="line">import android.widget.EditText;</div><div class="line">import android.widget.TextView;</div><div class="line"></div><div class="line">import java.io.BufferedReader;</div><div class="line">import java.io.IOException;</div><div class="line">import java.io.InputStream;</div><div class="line">import java.io.InputStreamReader;</div><div class="line">import java.io.OutputStream;</div><div class="line">import java.net.Socket;</div><div class="line">import java.util.concurrent.ExecutorService;</div><div class="line">import java.util.concurrent.Executors;</div><div class="line"></div><div class="line">public class MainActivity extends AppCompatActivity &#123;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 主 变量</div><div class="line">     */</div><div class="line"></div><div class="line">    // 主线程Handler</div><div class="line">    // 用于将从服务器获取的消息显示出来</div><div class="line">    private Handler mMainHandler;</div><div class="line"></div><div class="line">    // Socket变量</div><div class="line">    private Socket socket;</div><div class="line"></div><div class="line">    // 线程池</div><div class="line">    // 为了方便展示,此处直接采用线程池进行线程管理,而没有一个个开线程</div><div class="line">    private ExecutorService mThreadPool;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 接收服务器消息 变量</div><div class="line">     */</div><div class="line">    // 输入流对象</div><div class="line">    InputStream is;</div><div class="line"></div><div class="line">    // 输入流读取器对象</div><div class="line">    InputStreamReader isr ;</div><div class="line">    BufferedReader br ;</div><div class="line"></div><div class="line">    // 接收服务器发送过来的消息</div><div class="line">    String response;</div><div class="line"></div><div class="line"></div><div class="line">    /**</div><div class="line">     * 发送消息到服务器 变量</div><div class="line">     */</div><div class="line">    // 输出流对象</div><div class="line">    OutputStream outputStream;</div><div class="line"></div><div class="line">    /**</div><div class="line">     * 按钮 变量</div><div class="line">     */</div><div class="line"></div><div class="line">    // 连接 断开连接 发送数据到服务器 的按钮变量</div><div class="line">    private Button btnConnect, btnDisconnect, btnSend;</div><div class="line"></div><div class="line">    // 显示接收服务器消息 按钮</div><div class="line">    private TextView Receive,receive_message;</div><div class="line"></div><div class="line">    // 输入需要发送的消息 输入框</div><div class="line">    private EditText mEdit;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">        super.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line"></div><div class="line">        /**</div><div class="line">         * 初始化操作</div><div class="line">         */</div><div class="line"></div><div class="line">        // 初始化所有按钮</div><div class="line">        btnConnect = (Button) findViewById(R.id.connect);</div><div class="line">        btnDisconnect = (Button) findViewById(R.id.disconnect);</div><div class="line">        btnSend = (Button) findViewById(R.id.send);</div><div class="line">        mEdit = (EditText) findViewById(R.id.edit);</div><div class="line">        receive_message = (TextView) findViewById(R.id.receive_message);</div><div class="line">        Receive = (Button) findViewById(R.id.Receive);</div><div class="line"></div><div class="line">        // 初始化线程池</div><div class="line">        mThreadPool = Executors.newCachedThreadPool();</div><div class="line"></div><div class="line"></div><div class="line">        // 实例化主线程,用于更新接收过来的消息</div><div class="line">        mMainHandler = new Handler() &#123;</div><div class="line">            @Override</div><div class="line">            public void handleMessage(Message msg) &#123;</div><div class="line">                switch (msg.what) &#123;</div><div class="line">                    case 0:</div><div class="line">                        receive_message.setText(response);</div><div class="line">                        break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line"></div><div class="line"></div><div class="line">        /**</div><div class="line">         * 创建客户端 &amp; 服务器的连接</div><div class="line">         */</div><div class="line">        btnConnect.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line"></div><div class="line">                // 利用线程池直接开启一个线程 &amp; 执行该线程</div><div class="line">                mThreadPool.execute(new Runnable() &#123;</div><div class="line">                    @Override</div><div class="line">                    public void run() &#123;</div><div class="line"></div><div class="line">                        try &#123;</div><div class="line"></div><div class="line">                            // 创建Socket对象 &amp; 指定服务端的IP 及 端口号</div><div class="line">                            socket = new Socket(&quot;192.168.1.172&quot;, 8989);</div><div class="line"></div><div class="line">                            // 判断客户端和服务器是否连接成功</div><div class="line">                            System.out.println(socket.isConnected());</div><div class="line"></div><div class="line">                        &#125; catch (IOException e) &#123;</div><div class="line">                            e.printStackTrace();</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        /**</div><div class="line">         * 接收 服务器消息</div><div class="line">         */</div><div class="line">        Receive.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line"></div><div class="line">                // 利用线程池直接开启一个线程 &amp; 执行该线程</div><div class="line">                mThreadPool.execute(new Runnable() &#123;</div><div class="line">                    @Override</div><div class="line">                    public void run() &#123;</div><div class="line"></div><div class="line">                          try &#123;</div><div class="line">                            // 步骤1：创建输入流对象InputStream</div><div class="line">                            is = socket.getInputStream();</div><div class="line"></div><div class="line">                              // 步骤2：创建输入流读取器对象 并传入输入流对象</div><div class="line">                              // 该对象作用：获取服务器返回的数据</div><div class="line">                              isr = new InputStreamReader(is);</div><div class="line">                              br = new BufferedReader(isr);</div><div class="line"></div><div class="line">                              // 步骤3：通过输入流读取器对象 接收服务器发送过来的数据</div><div class="line">                              response = br.readLine();</div><div class="line"></div><div class="line">                              // 步骤4:通知主线程,将接收的消息显示到界面</div><div class="line">                              Message msg = Message.obtain();</div><div class="line">                              msg.what = 0;</div><div class="line">                              mMainHandler.sendMessage(msg);</div><div class="line"></div><div class="line">                        &#125; catch (IOException e) &#123;</div><div class="line">                            e.printStackTrace();</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line"></div><div class="line">        /**</div><div class="line">         * 发送消息 给 服务器</div><div class="line">         */</div><div class="line">        btnSend.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line"></div><div class="line">                // 利用线程池直接开启一个线程 &amp; 执行该线程</div><div class="line">                mThreadPool.execute(new Runnable() &#123;</div><div class="line">                    @Override</div><div class="line">                    public void run() &#123;</div><div class="line"></div><div class="line">                        try &#123;</div><div class="line">                            // 步骤1：从Socket 获得输出流对象OutputStream</div><div class="line">                            // 该对象作用：发送数据</div><div class="line">                            outputStream = socket.getOutputStream();</div><div class="line"></div><div class="line">                            // 步骤2：写入需要发送的数据到输出流对象中</div><div class="line">                            outputStream.write((mEdit.getText().toString()+&quot;\n&quot;).getBytes(&quot;utf-8&quot;));</div><div class="line">                            // 特别注意：数据的结尾加上换行符才可让服务器端的readline()停止阻塞</div><div class="line"></div><div class="line">                            // 步骤3：发送数据到服务端</div><div class="line">                            outputStream.flush();</div><div class="line"></div><div class="line">                        &#125; catch (IOException e) &#123;</div><div class="line">                            e.printStackTrace();</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                    &#125;</div><div class="line">                &#125;);</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line"></div><div class="line">        /**</div><div class="line">         * 断开客户端 &amp; 服务器的连接</div><div class="line">         */</div><div class="line">        btnDisconnect.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onClick(View v) &#123;</div><div class="line"></div><div class="line">                try &#123;</div><div class="line">                    // 断开 客户端发送到服务器 的连接，即关闭输出流对象OutputStream</div><div class="line">                    outputStream.close();</div><div class="line"></div><div class="line">                    // 断开 服务器发送到客户端 的连接，即关闭输入流读取器对象BufferedReader</div><div class="line">                    br.close();</div><div class="line"></div><div class="line">                    // 最终关闭整个Socket连接</div><div class="line">                    socket.close();</div><div class="line"></div><div class="line">                    // 判断客户端和服务器是否已经断开连接</div><div class="line">                    System.out.println(socket.isConnected());</div><div class="line"></div><div class="line">                &#125; catch (IOException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="6-2-服务器-实现"><a href="#6-2-服务器-实现" class="headerlink" title="6.2 服务器 实现"></a>6.2 服务器 实现</h3><ul>
+<li><p>因本文主要讲解客户端，所以服务器仅仅是为了配合客户端展示；</p>
+</li>
+<li><p>为了简化服务器使用，此处采用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Mina</div></pre></td></tr></table></figure>
+<p>框架</p>
+<p>​</p>
+<blockquote>
+<ol>
+<li>服务器代码请在<code>eclipse</code>平台运行</li>
+<li>按照我的步骤一步步实现就可以无脑运行了</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<p><strong>步骤1：导入Mina包</strong></p>
+<p>请直接移步到百度网盘：<a href="https://pan.baidu.com/s/1i50xChv" target="_blank" rel="external">下载链接（密码: q73e）</a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/944365-90b634041b47b84a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>示意图</p>
+<p><strong>步骤2：创建服务器线程</strong><br> <em>TestHandler.java</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">package mina;</div><div class="line">// 导入包</div><div class="line"></div><div class="line">public class TestHandler extends IoHandlerAdapter &#123;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void exceptionCaught(IoSession session, Throwable cause) throws Exception &#123;</div><div class="line">        System.out.println(&quot;exceptionCaught: &quot; + cause);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void messageReceived(IoSession session, Object message) throws Exception &#123;</div><div class="line">        System.out.println(&quot;recieve : &quot; + (String) message);</div><div class="line">        session.write(&quot;hello I am server&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void messageSent(IoSession session, Object message) throws Exception &#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void sessionClosed(IoSession session) throws Exception &#123;</div><div class="line">        System.out.println(&quot;sessionClosed&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void sessionOpened(IoSession session) throws Exception &#123;</div><div class="line">        System.out.println(&quot;sessionOpen&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void sessionIdle(IoSession session, IdleStatus status) throws Exception &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>步骤3：创建服务器主代码</strong><br> <em>TestHandler.java</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">package mina;</div><div class="line"></div><div class="line">import java.io.IOException;</div><div class="line">import java.net.InetSocketAddress;</div><div class="line"></div><div class="line">import org.apache.mina.filter.codec.ProtocolCodecFilter;</div><div class="line">import org.apache.mina.filter.codec.textline.TextLineCodecFactory;</div><div class="line">import org.apache.mina.transport.socket.nio.NioSocketAcceptor;</div><div class="line"></div><div class="line">public class TestServer &#123;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        NioSocketAcceptor acceptor = null;</div><div class="line">        try &#123;</div><div class="line">            acceptor = new NioSocketAcceptor();</div><div class="line">            acceptor.setHandler(new TestHandler());</div><div class="line">            acceptor.getFilterChain().addLast(&quot;mFilter&quot;, new ProtocolCodecFilter(new TextLineCodecFactory()));</div><div class="line">            acceptor.setReuseAddress(true);</div><div class="line">            acceptor.bind(new InetSocketAddress(8989));</div><div class="line">        &#125; catch (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>至此，客户端 &amp; 服务器的代码均实现完毕。</p>
+<hr>
+<h3 id="6-3-测试结果"><a href="#6-3-测试结果" class="headerlink" title="6.3 测试结果"></a>6.3 测试结果</h3><ul>
+<li>点击 <code>Connect</code>按钮： 连接成功</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/944365-0f69bb561fbca4f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>示意图</p>
+<ul>
+<li>输入发送的消息，点击 <code>Send</code> 按钮发送</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/944365-7438aa8f57a738ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>示意图</p>
+<ul>
+<li>服务器接收到客户端发送的消息</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/944365-4d7ec8242eeb9c47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>示意图</p>
+<ul>
+<li>点击 <code>Receive From Message</code>按钮，客户端 读取 服务器返回的消息</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/944365-399d395e3995810c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>示意图</p>
+<ul>
+<li>点击 <code>DisConnect</code>按钮，断开 客户端 &amp; 服务器的连接</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/944365-b30bd33353835786.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>客户端示意图</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/944365-67d0d9eaa71cc3f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="img"></p>
+<p>服务器示意图</p>
+<hr>
+<h3 id="6-4-源码地址"><a href="#6-4-源码地址" class="headerlink" title="6.4 源码地址"></a>6.4 源码地址</h3><p><a href="https://github.com/Carson-Ho/Socket_learning" target="_blank" rel="external">Carson_Ho的Github地址：Socket具体实例</a></p>
+<hr>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Socket/" rel="tag"># Socket</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/23/log04/" rel="next" title="Kotlin上手">
+                <i class="fa fa-chevron-left"></i> Kotlin上手
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://wp.hl262.top/dog2.png"
+               alt="Huanglei" />
+          <p class="site-author-name" itemprop="name">Huanglei</p>
+           
+              <p class="site-description motion-element" itemprop="description">曾让你心疼的姑娘,如今已悄然无踪影</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#这是一份很详细的Socket使用攻略"><span class="nav-number">1.</span> <span class="nav-text">这是一份很详细的Socket使用攻略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-网络基础"><span class="nav-number">3.</span> <span class="nav-text">1.网络基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-计算机网络分层"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">1.1 计算机网络分层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-端口号（PORT）"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">1.2 端口号（PORT）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-C-S结构"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">1.3 C/S结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-TCP协议"><span class="nav-number">3.0.0.4.</span> <span class="nav-text">1.4 TCP协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么TCP建立连接需要三次握手？"><span class="nav-number">3.0.0.5.</span> <span class="nav-text">为什么TCP建立连接需要三次握手？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么TCP释放连接需要四次挥手？"><span class="nav-number">3.0.0.6.</span> <span class="nav-text">为什么TCP释放连接需要四次挥手？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-UDP协议"><span class="nav-number">3.0.0.6.1.</span> <span class="nav-text">1.5 UDP协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-6-HTTP协议"><span class="nav-number">3.0.0.6.2.</span> <span class="nav-text">1.6 HTTP协议</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Socket定义"><span class="nav-number">4.</span> <span class="nav-text">2. Socket定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-原理"><span class="nav-number">5.</span> <span class="nav-text">3. 原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Socket-与-Http-对比"><span class="nav-number">6.</span> <span class="nav-text">4. Socket 与 Http 对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-使用步骤"><span class="nav-number">7.</span> <span class="nav-text">5. 使用步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-具体实例"><span class="nav-number">8.</span> <span class="nav-text">6. 具体实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-客户端-实现"><span class="nav-number">8.0.1.</span> <span class="nav-text">6.1 客户端 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-服务器-实现"><span class="nav-number">8.0.2.</span> <span class="nav-text">6.2 服务器 实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-测试结果"><span class="nav-number">8.0.3.</span> <span class="nav-text">6.3 测试结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-源码地址"><span class="nav-number">8.0.4.</span> <span class="nav-text">6.4 源码地址</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Huanglei</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/06/24/SocketExplain/';
+          this.page.identifier = '2017/06/24/SocketExplain/';
+          this.page.title = 'SocketExplain';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
