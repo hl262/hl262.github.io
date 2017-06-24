@@ -103,13 +103,13 @@
 
 
 
-<meta name="description" content="这是一份很详细的Socket使用攻略 原文地址  前言  Socket的使用在 Android网络编程中非常重要 今天我将带大家全面了解 Socket 及 其使用方法  目录 目录  1.网络基础1.1 计算机网络分层计算机网络分为五层：物理层、数据链路层、网络层、运输层、应用层  计算机网络 其中：  网络层：负责根据IP找到目的地址的主机 运输层：通过端口把数据传到目的主机的目的进程，来实现">
+<meta name="description" content="年轻时候，如果爱，别说永远，说珍惜。❤  这是一份很详细的Socket使用攻略 原文地址  前言  Socket的使用在 Android网络编程中非常重要 今天我将带大家全面了解 Socket 及 其使用方法  目录 目录  1.网络基础1.1 计算机网络分层计算机网络分为五层：物理层、数据链路层、网络层、运输层、应用层  计算机网络 其中：  网络层：负责根据IP找到目的地址的主机 运输层：通">
 <meta name="keywords" content="Socket">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SocketExplain">
+<meta property="og:title" content="Socket详解">
 <meta property="og:url" content="http://yoursite.com/2017/06/24/SocketExplain/index.html">
 <meta property="og:site_name" content="黄雷个人博客">
-<meta property="og:description" content="这是一份很详细的Socket使用攻略 原文地址  前言  Socket的使用在 Android网络编程中非常重要 今天我将带大家全面了解 Socket 及 其使用方法  目录 目录  1.网络基础1.1 计算机网络分层计算机网络分为五层：物理层、数据链路层、网络层、运输层、应用层  计算机网络 其中：  网络层：负责根据IP找到目的地址的主机 运输层：通过端口把数据传到目的主机的目的进程，来实现">
+<meta property="og:description" content="年轻时候，如果爱，别说永远，说珍惜。❤  这是一份很详细的Socket使用攻略 原文地址  前言  Socket的使用在 Android网络编程中非常重要 今天我将带大家全面了解 Socket 及 其使用方法  目录 目录  1.网络基础1.1 计算机网络分层计算机网络分为五层：物理层、数据链路层、网络层、运输层、应用层  计算机网络 其中：  网络层：负责根据IP找到目的地址的主机 运输层：通">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-8ae76a32c031b97d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-c35ec7bfb82b690b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-c57e88a0318ef517.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -123,10 +123,10 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-399d395e3995810c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-b30bd33353835786.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-67d0d9eaa71cc3f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-24T09:47:35.665Z">
+<meta property="og:updated_time" content="2017-06-24T09:50:50.408Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SocketExplain">
-<meta name="twitter:description" content="这是一份很详细的Socket使用攻略 原文地址  前言  Socket的使用在 Android网络编程中非常重要 今天我将带大家全面了解 Socket 及 其使用方法  目录 目录  1.网络基础1.1 计算机网络分层计算机网络分为五层：物理层、数据链路层、网络层、运输层、应用层  计算机网络 其中：  网络层：负责根据IP找到目的地址的主机 运输层：通过端口把数据传到目的主机的目的进程，来实现">
+<meta name="twitter:title" content="Socket详解">
+<meta name="twitter:description" content="年轻时候，如果爱，别说永远，说珍惜。❤  这是一份很详细的Socket使用攻略 原文地址  前言  Socket的使用在 Android网络编程中非常重要 今天我将带大家全面了解 Socket 及 其使用方法  目录 目录  1.网络基础1.1 计算机网络分层计算机网络分为五层：物理层、数据链路层、网络层、运输层、应用层  计算机网络 其中：  网络层：负责根据IP找到目的地址的主机 运输层：通">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/944365-8ae76a32c031b97d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -161,7 +161,7 @@
 
 
 
-  <title>SocketExplain | 黄雷个人博客</title>
+  <title>Socket详解 | 黄雷个人博客</title>
   
 
 
@@ -361,7 +361,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SocketExplain</h1>
+          <h1 class="post-title" itemprop="name headline">Socket详解</h1>
         
 
         <div class="post-meta">
@@ -441,7 +441,9 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><h1 id="这是一份很详细的Socket使用攻略"><a href="#这是一份很详细的Socket使用攻略" class="headerlink" title="这是一份很详细的Socket使用攻略"></a>这是一份很详细的Socket使用攻略</h1><p><a href="http://www.jianshu.com/p/089fb79e308b" target="_blank" rel="external"> 原文地址</a></p>
+        <script src="/assets/js/APlayer.min.js"> </script><blockquote class="blockquote-center">年轻时候，如果爱，别说永远，说珍惜。<br><br><br><p align="right"><font color="#456121">❤</font></p><br><br></blockquote>
+
+<h1 id="这是一份很详细的Socket使用攻略"><a href="#这是一份很详细的Socket使用攻略" class="headerlink" title="这是一份很详细的Socket使用攻略"></a>这是一份很详细的Socket使用攻略</h1><p><a href="http://www.jianshu.com/p/089fb79e308b" target="_blank" rel="external"> 原文地址</a></p>
 <p> 前言</p>
 <ul>
 <li><code>Socket</code>的使用在 <code>Android</code>网络编程中非常重要</li>
@@ -1097,7 +1099,7 @@
         var disqus_config = function () {
           this.page.url = 'http://yoursite.com/2017/06/24/SocketExplain/';
           this.page.identifier = '2017/06/24/SocketExplain/';
-          this.page.title = 'SocketExplain';
+          this.page.title = 'Socket详解';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://.disqus.com/embed.js';
